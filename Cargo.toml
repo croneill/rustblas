@@ -1,0 +1,6 @@
+[package]
+name = "rustblas"
+version = "0.1.0"
+authors = ["Charles O'Neill <oneill@swissmail.org>"]
+
+[dependencies]
