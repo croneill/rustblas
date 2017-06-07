@@ -1,6 +1,66 @@
 #![allow(dead_code)]
 
+use List::*;
+
+enum List {
+    Cons(u32, Box<List>),
+    Nil,
+}
+
+impl List {
+    fn new() -> List {
+        Nil
+    }
+
+    fn prepend(self, elem: u32) -> List {
+        Cons(elem, Box::new(self))
+    }
+
+    fn pop( &self) -> List {
+        match *self {
+            //Cons(_,  ref tail) => *tail,
+            Nil => Nil,
+            _ => Nil,
+        }
+
+    }
+
+    fn len(&self) -> u32 {
+        match *self {
+            Cons(_, ref tail) => 1 + tail.len(),
+            Nil => 0
+        }
+    }
+
+    fn stringify(&self) -> String {
+        match *self {
+            Cons(head, ref tail) => {
+                format!("{}, {}", head, tail.stringify())
+            },
+            Nil => { format!("Nil")},
+        }
+    }
+
+}
+
 fn main(){
+    let mut list = List::new();
+    list = list.prepend(1);
+    list = list.prepend(2);
+    list = list.prepend(3);
+    list = list.prepend(4);
+
+    println!("linked list has length {}", list.len());
+    println!("{}", list.stringify());
+
+    list = list.pop();
+    list = list.pop();
+    list = list.pop();
+
+}
+
+
+fn main2(){
 
     let xs: [i32; 5] = [1,2,3,4,5];
     println!(" {:?}", xs);
@@ -18,7 +78,7 @@ fn main(){
         p2: Point,
     }
 
-    let point: Point = Point { x: 0.3, y: 0.4, z: 0.5};
+    //let point: Point = Point { x: 0.3, y: 0.4, z: 0.5};
 
     struct Leaf {
         phi: f32,
@@ -34,11 +94,21 @@ fn main(){
         Branch,
     }
 
-    //let root = Voxel::Branch;
-    //root.a = Voxel::Leaf;
+    enum Number {
+        Zero,
+        One,
+        Two,
+    }
 
-    //match root {
-    //    Leaf => println!("Is a leaf"),
-    //    Branch => println!("Is a branch"),
-    //}
+    enum Color {
+        Red = 0xff_00_00,
+        Green = 0x00_ff_00,
+        Blue = 0x00_00_ff,
+    }
+
+    println!("zero is {}", Number::Zero as i32);
+
+    println!("Red is {:06x}", Color::Red as i32);
+    println!("Red is {:06o}", Color::Red as i32);
+
 }
