@@ -9,6 +9,10 @@ fn is_big(n: i32) -> bool {
 }
 
 fn main() {
+    let vec = rustlab::Vec3(1.0,1.0,1.0) + rustlab::Vec3(0.0,0.0,0.0);
+}
+
+fn main2() {
     let n = 160877;
 
     println!("This is {}", LANGUAGE);

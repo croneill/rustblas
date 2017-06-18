@@ -2,7 +2,7 @@ use std::ops::{Add,Sub,AddAssign};
 use std::cmp::{PartialEq};
 
 #[derive(Clone,Copy,Debug)]
-pub struct Vec3 (f64, f64, f64);
+pub struct Vec3 (pub f64,pub f64,pub f64);
 
 pub fn dot_product(v1: Vec3, v2: Vec3) -> f64 {
         v1.0 * v2.0 + v1.1 * v2.1 + v1.2 * v2.2
